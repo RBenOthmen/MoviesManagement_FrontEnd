@@ -1,6 +1,8 @@
 import { Movie } from './movie';
 
-export interface Tv extends Movie {}
+export interface Tv extends Movie {
+  name: string;
+}
 
 export interface TvDto {
   page: number;

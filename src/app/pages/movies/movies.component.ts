@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { subscribeOn } from 'rxjs';
 import { Movie } from 'src/app/models/movie';
 import { MoviesService } from 'src/app/services/movies.service';
 
@@ -24,6 +23,6 @@ export class MoviesComponent implements OnInit {
   }
 
   paginate(event: any) {
-   this.getPagedMovies(event.page + 1);
+    this.getPagedMovies(event.page + 1);
   }
 }
