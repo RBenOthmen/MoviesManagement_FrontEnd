@@ -45,6 +45,18 @@ export class MoviesService {
     );
   }
 
+  getMoviesByGenre(genreId: string, pageNumber: number) {
+    return this.http
+      .get<MovieDto>(
+        `${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${pageNumber}&api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
+  }
+
   getMovieImages(id: string) {
     return this.http.get<MovieImages>(`${this.baseUrl}/movie/${id}/images?api_key=${this.apiKey}`);
   }
@@ -65,9 +77,12 @@ export class MoviesService {
       );
   }
 
-  searchMovies(page: number) {
+  searchMovies(page: number, searchValue?: string) {
+    const uri = searchValue ? '/search/movie' : '/movie/popular';
     return this.http
-      .get<MovieDto>(`${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`)
+      .get<MovieDto>(
+        `${this.baseUrl}${uri}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`
+      )
       .pipe(
         switchMap((res) => {
           return of(res.results);
