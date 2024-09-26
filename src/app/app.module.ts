@@ -20,6 +20,7 @@ import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
 import { GenresComponent } from './pages/genres/genres.component';
 import { InputTextModule } from 'primeng/inputtext';
+import { RoundDecimalPipe } from './pipes/round-decimal.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ItemComponent,
     MovieComponent,
     VideoEmbedComponent,
-    GenresComponent
+    GenresComponent,
+    RoundDecimalPipe
   ],
   imports: [
     BrowserModule,
